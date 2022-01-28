@@ -130,7 +130,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 42131524}
-  - component: {fileID: 42131525}
   - component: {fileID: 42131526}
   - component: {fileID: 42131527}
   m_Layer: 5
@@ -164,18 +163,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &42131525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42131523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &42131526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +214,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 42131527}
-        m_MethodName: 
+        m_MethodName: SetLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2041,6 +2028,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f47e5001aec17b4e8384cc9894c4ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioVariables:
+  - MasterVolume
+  - SoundsVolume
+  - MusicVolume
+  - AmbienceVolume
+  - CinematicsVolume
 --- !u!114 &1356510309
 MonoBehaviour:
   m_ObjectHideFlags: 0
