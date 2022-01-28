@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class PlayerPrefsLoader : MonoBehaviour
+public class PlayerPreferences : MonoBehaviour
 {
-    private PlayerPrefsLoader _playerPreferences;
+    private PlayerPreferences _playerPreferences;
 
-    public PlayerPrefsLoader Instance
+    public PlayerPreferences Instance
     {
         get => _playerPreferences;
         set
@@ -50,8 +50,9 @@ public class PlayerPrefsLoader : MonoBehaviour
 
     private void StoreFloat(string variableName)
     {
-        AudioManager.Instance.GetMixerVariable(variableName, out float variable);
-        PlayerPrefs.SetFloat(variableName, variable);
+        AudioManager.Instance.GetMixerVariable(variableName, out float number);
+        Debug.Log(variableName + " has " + number);
+        PlayerPrefs.SetFloat(variableName, number);
     }
 
     private float RecoverFloat(string variableName)
