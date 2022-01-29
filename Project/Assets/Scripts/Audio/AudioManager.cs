@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -45,6 +46,11 @@ public class AudioManager : MonoBehaviour
     }
 
     public List<TemporalAudio> audios = new List<TemporalAudio>();
+
+    [Header("AudioSources")]
+
+    public AudioSource musicAudioSource;
+    private IEnumerator changeMusicCoroutine;
 
     private void Awake()
     {
@@ -99,6 +105,23 @@ public class AudioManager : MonoBehaviour
         audios.Add(temp);
     }
 
+    public void PlayMusic(AudioClip music)
+    {
+        if (changeMusicCoroutine != null) return;
+        // Queue System?
+        changeMusicCoroutine = ChangeMusicFade(musicAudioSource, music, 2f);
+        StartCoroutine(changeMusicCoroutine);
+    }
+
+    [Button("Play Music Clip")]
+    public void PlayMusic(AudioClip music, float timeToFade)
+    {
+        if (changeMusicCoroutine != null) return;
+
+        changeMusicCoroutine = ChangeMusicFade(musicAudioSource, music, timeToFade);
+        StartCoroutine(changeMusicCoroutine);
+    }
+
     IEnumerator checkAudios()
     {
         while (enabled)
@@ -120,5 +143,66 @@ public class AudioManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    IEnumerator FadeOut(AudioSource audioSource, float timeToFade)
+    {
+        // Music volume fades until zero.
+        // When it does, change the music
+        // After changing music, fade back to audio before.
+        // End.
+
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / timeToFade;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
+    }
+
+    IEnumerator FadeIn(AudioSource audioSource, float volume, float timeToFade)
+    {
+        // Music volume fades until zero.
+        // When it does, change the music
+        // After changing music, fade back to audio before.
+        // End.
+        audioSource.Play();
+
+        while (audioSource.volume < volume)
+        {
+            audioSource.volume += volume * Time.deltaTime / timeToFade;
+
+            yield return null;
+        }
+    }
+
+    IEnumerator ChangeMusicFade(AudioSource audioSource, AudioClip clip, float timeToFade)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / timeToFade;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        audioSource.Stop();
+        audioSource.clip = clip;
+        yield return new WaitForEndOfFrame();
+        audioSource.Play();
+
+        while (audioSource.volume < startVolume)
+        {
+            audioSource.volume += startVolume * Time.deltaTime / timeToFade;
+
+            yield return new WaitForEndOfFrame();
+        }
+        changeMusicCoroutine = null;
     }
 }

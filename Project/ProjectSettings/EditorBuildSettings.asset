@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Prototype/Jordi.unity
+    guid: 03b8bf44e202ebe409e705054bd815d1
+  - enabled: 1
+    path: Assets/Scenes/Add-Ons/UI.unity
+    guid: 5322b7173238ed0468e09a55ac36c981
   m_configObjects: {}
