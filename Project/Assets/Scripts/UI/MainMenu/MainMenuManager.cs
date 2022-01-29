@@ -47,9 +47,17 @@ public class MainMenuManager : MonoBehaviour
     public void ReturnToMain()
     {
         MainParent.gameObject.SetActive(true);
-        OptionsParent.gameObject.SetActive(false);
-        CreditsParent.gameObject.SetActive(false);
-        ControlsParent.gameObject.SetActive(false);
+        if(OptionsParent != null)
+            OptionsParent.gameObject.SetActive(false);
+        if(ControlsParent != null)
+            ControlsParent.gameObject.SetActive(false);
+        if(CreditsParent != null)
+            CreditsParent.gameObject.SetActive(false);
+    }
+
+    public void Resume()
+    {
+        gameObject.SetActive(false);
     }
 
     public void Play()
