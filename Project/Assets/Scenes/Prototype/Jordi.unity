@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 671259453}
   - component: {fileID: 671259452}
   - component: {fileID: 671259451}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773054464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9961594, y: 4.421737, z: -10.662361}
+  m_LocalPosition: {x: 1.9961593, y: 4.421737, z: -10.662361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1673861118}
@@ -551,7 +551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673861115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.033056345, y: 1.0661154, z: -10}
+  m_LocalPosition: {x: 0.033060975, y: 1.0661154, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 113406403}
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   debugMode: 0
   groundLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   groundSpot: {fileID: 533859015}
   visuals: {fileID: 0}
   OnLandEvent:
