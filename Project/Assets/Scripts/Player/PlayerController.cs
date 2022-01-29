@@ -11,7 +11,8 @@ namespace com.kpg.ggj2022.player
     [RequireComponent(typeof(Collider2D))]
     public class PlayerController : RestartableObject
     {
-        [Title("Properties")] [Tooltip("Instantiate properties.")]
+        [Title("Properties")]
+        [Tooltip("Instantiate properties.")]
         public bool InstantiateProperties = true;
         public PlayerProperties Properties;
 
@@ -94,9 +95,9 @@ namespace com.kpg.ggj2022.player
         private void CheckGround()
         {
             Collider2D[] groundCheck = Physics2D.OverlapCircleAll(groundSpot.position, k_GroundDetectionRadius, groundLayers);
-            foreach(Collider2D collider in groundCheck)
+            foreach (Collider2D collider in groundCheck)
             {
-                if(collider != bc2d)
+                if (collider != bc2d)
                 {
                     if (!IsGrounded)
                         OnLandEvent.Invoke();
@@ -119,7 +120,7 @@ namespace com.kpg.ggj2022.player
             }
             else
             {
-                m_Direction.y -= Properties.GravitySpeed*Time.deltaTime;
+                m_Direction.y -= Properties.GravitySpeed * Time.deltaTime;
 
                 if (!ResetInertiaOnGround) ResetInertiaOnGround = true;
             }
@@ -138,7 +139,7 @@ namespace com.kpg.ggj2022.player
 
         void CheckFlip()
         {
-            if( (m_Direction.x > 0f && !m_FacingRight) || (m_Direction.x < 0f && m_FacingRight) ) 
+            if ((m_Direction.x > 0f && !m_FacingRight) || (m_Direction.x < 0f && m_FacingRight))
             {
                 Flip();
             }
@@ -148,9 +149,9 @@ namespace com.kpg.ggj2022.player
         {
             m_FacingRight = !m_FacingRight;
             // Whatever, mostly flip the sprite. Maybe just the sprite.
-            Vector3 newScale = transform.localScale;
+            Vector3 newScale = visuals.localScale;
             newScale.x *= -1;
-            transform.localScale = newScale;
+            visuals.localScale = newScale;
         }
 
         void LimitVelocity(ref Vector2 vel)
@@ -229,7 +230,7 @@ namespace com.kpg.ggj2022.player
             // if (!context.performed) return;
 
             Debug.Log("Freezing mechanic!");
-            if(context.performed)
+            if (context.performed)
             {
                 // Change sprite color
                 visualSprite.color = Color.blue;
@@ -278,14 +279,24 @@ namespace com.kpg.ggj2022.player
 
         #region Getters
 
-        public Vector3 GetVelocity()
+        public Vector2 GetVelocity()
         {
-            return m_Direction;
+            return rb2d.velocity;
         }
 
         public bool GetFrozen()
         {
             return IsFrozen;
+        }
+
+        public bool GetGrounded()
+        {
+            return IsGrounded;
+        }
+
+        public bool IsVisible()
+        {
+            return visibleByEnemies;
         }
 
         #endregion
