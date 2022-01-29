@@ -44,3 +44,6 @@ TagManager:
   - name: Walkable
     uniqueID: 1876916971
     locked: 0
+  - name: Player
+    uniqueID: 2079264295
+    locked: 0
