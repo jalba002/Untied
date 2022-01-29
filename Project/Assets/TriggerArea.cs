@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class TriggerArea : MonoBehaviour
 {
     public Color debugColor = Color.red;
+    protected bool trapEnabled;
 
     public UnityEvent OnTriggerActivation = new UnityEvent();
 
