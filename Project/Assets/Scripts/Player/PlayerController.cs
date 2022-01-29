@@ -207,6 +207,14 @@ namespace com.kpg.ggj2022.player
             // Velocity.z = movement.y;
         }
 
+        public void Freeze(InputAction.CallbackContext context)
+        {
+            if (!controlsEnabled) return;
+            if (!context.performed) return;
+
+            Debug.Log("Freezing mechanic!");
+        }
+
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {
             if (!enabled) return;
@@ -284,12 +292,7 @@ namespace com.kpg.ggj2022.player
 
         public void Respawn()
         {
-            //GameManager.GM.RespawnPlayer();
-        }
-
-        public override void Restart()
-        {
-            //GameManager.GM.CoolPlayerTeleport(startingPosition);
+            GameManager.GM.RespawnPlayer();
         }
 
         #endregion
