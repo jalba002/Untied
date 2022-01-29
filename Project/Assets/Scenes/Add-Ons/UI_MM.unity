@@ -492,6 +492,11 @@ MonoBehaviour:
   ControlsParent: {fileID: 1145011726}
   OptionsParent: {fileID: 732087558}
   CreditsParent: {fileID: 1538104952}
+  twitterNameParameter: 'Check this amazing game made by @andrew_raya @JordiAlbaDev
+    @ssegarra3D @Sergisggs GerardTorras for the #GlobalGameJam @globalgamejam! Here
+    the link: '
+  twitterDescriptionParam: 
+  globalGameJamLink: https://globalgamejam.org/2022/games/untied-8
 --- !u!1 &178160260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,7 +1914,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
