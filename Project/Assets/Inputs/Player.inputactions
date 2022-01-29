@@ -55,9 +55,9 @@
                 },
                 {
                     "name": "Freeze",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "701df0ed-3254-4b4f-8d9e-2afdd55be2f7",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": ""
                 }

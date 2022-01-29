@@ -18,7 +18,7 @@ public class Spikes : TriggerArea
                 OnTriggerActivation.Invoke();
                 ChangeColor();
                 // Kills instantly?
-                pc.Respawn();
+                pc.Respawn(); // 
             }
         }
         catch (Exception e)

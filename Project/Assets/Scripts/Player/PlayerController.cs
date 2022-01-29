@@ -13,7 +13,6 @@ namespace com.kpg.ggj2022.player
     {
         [Title("Properties")] [Tooltip("Instantiate properties.")]
         public bool InstantiateProperties = true;
-
         public PlayerProperties Properties;
 
         [Header("Private Speeds")]
@@ -41,6 +40,8 @@ namespace com.kpg.ggj2022.player
         [Header("2D Game")]
         Rigidbody2D rb2d;
         BoxCollider2D bc2d;
+        SpriteRenderer visualSprite;
+
         bool IsGrounded = false;
         public LayerMask groundLayers;
         public const float k_GroundDetectionRadius = 0.5f;
@@ -48,6 +49,10 @@ namespace com.kpg.ggj2022.player
         [Header("Visuals")]
         [Tooltip("Child gameobject that contains the model and the animations.")]
         public Transform visuals;
+        bool visibleByEnemies = true;
+        bool ableToMove = true;
+
+
 
         private bool m_FacingRight = true;
 
@@ -56,7 +61,8 @@ namespace com.kpg.ggj2022.player
         public UnityEvent OnLandEvent = new UnityEvent();
         public UnityEvent OnFreezeEvent = new UnityEvent();
 
-        private bool controlsEnabled = true;
+        bool controlsEnabled = true;
+        bool IsFrozen = false;
 
         #region Unity_Calls
         private new void Awake()
@@ -64,7 +70,15 @@ namespace com.kpg.ggj2022.player
             base.Awake();
             rb2d = GetComponent<Rigidbody2D>();
             bc2d = GetComponent<BoxCollider2D>();
+            visualSprite = GetComponentInChildren<SpriteRenderer>();
+
             Properties = InstantiateProperties ? Instantiate(Properties) : Properties;
+        }
+
+        private void Start()
+        {
+            ableToMove = true;
+            visibleByEnemies = true;
         }
 
         private void FixedUpdate()
@@ -155,6 +169,8 @@ namespace com.kpg.ggj2022.player
         public void SetVelocity(Vector2 Velocity)
         {
             // Stuff for movement with platforms.
+            this.m_Direction = Velocity;
+            rb2d.velocity = Velocity;
         }
 
         public void SetInertia(Vector3 Inertia)
@@ -181,7 +197,7 @@ namespace com.kpg.ggj2022.player
 
         public void Jump(InputAction.CallbackContext context)
         {
-            if (!controlsEnabled) return;
+            if (!controlsEnabled || !ableToMove) return;
             // Debug.Log("Jumping input detected.");
             // Force remove from ground.
             if (IsGrounded && context.performed)
@@ -200,7 +216,7 @@ namespace com.kpg.ggj2022.player
 
         public void Move(InputAction.CallbackContext context)
         {
-            if (!controlsEnabled) return;
+            if (!controlsEnabled || !ableToMove) return;
             var movement = context.ReadValue<Vector2>();
             //LastWalkingSpeed = LimitValue(Properties.WalkingSpeed * Time.deltaTime, LastWalkingSpeed, 1.1f);
             m_Direction.x = movement.x;
@@ -210,9 +226,24 @@ namespace com.kpg.ggj2022.player
         public void Freeze(InputAction.CallbackContext context)
         {
             if (!controlsEnabled) return;
-            if (!context.performed) return;
+            // if (!context.performed) return;
 
             Debug.Log("Freezing mechanic!");
+            if(context.performed)
+            {
+                // Change sprite color
+                visualSprite.color = Color.blue;
+                ableToMove = false;
+                visibleByEnemies = false;
+                SetVelocity(Vector2.zero);
+            }
+            else
+            {
+                // Return to original.x
+                visualSprite.color = Color.green;
+                ableToMove = true;
+                visibleByEnemies = true;
+            }
         }
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -250,6 +281,11 @@ namespace com.kpg.ggj2022.player
         public Vector3 GetVelocity()
         {
             return m_Direction;
+        }
+
+        public bool GetFrozen()
+        {
+            return IsFrozen;
         }
 
         #endregion
