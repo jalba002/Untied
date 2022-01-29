@@ -6,9 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Spikes : TriggerArea
 {
+    public bool debugMode = false;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         // base.OnTriggerEnter2D(collision);
+        if (!trapEnabled) return;
+
         try
         {
             PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
@@ -16,14 +19,27 @@ public class Spikes : TriggerArea
             {
                 // Enable the trigger
                 OnTriggerActivation.Invoke();
-                ChangeColor();
+                if (debugMode)
+                    ChangeColor();
                 // Kills instantly?
                 pc.Respawn(); // 
+
+                // Kills the pc instantly. Dies.
             }
         }
         catch (Exception e)
         {
 
         }
+    }
+
+    public void EnableTrap()
+    {
+        trapEnabled = true;
+    }
+
+    public void DisableTrap()
+    {
+        trapEnabled = false;
     }
 }
