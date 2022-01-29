@@ -72,4 +72,15 @@ public class MainMenuManager : MonoBehaviour
             Application.Quit();
         }
     }
+
+    public string twitterNameParameter = "Check this amazing game made by @andrew_raya @JordiAlbaDev @ssegarra3D @Sergisggs GerardTorras for the #GlobalGameJam @globalgamejam! Here the link: ";
+    public string twitterDescriptionParam = "";
+    private const string twitterAdress = "https://twitter.com/intent/tweet";
+    public string globalGameJamLink = "https://globalgamejam.org/2022/games/untied-8";
+
+    public void PressToShareTwitter()
+    {
+        Application.OpenURL(twitterAdress + "?text=" + WWW.EscapeURL(twitterNameParameter + "\n" +
+            twitterDescriptionParam + "\n" + globalGameJamLink));
+    }
 }

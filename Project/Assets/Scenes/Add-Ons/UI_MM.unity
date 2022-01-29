@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mourning in freedom
+  m_text: Untied
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c03a15c36aebbc4f8ce614370f7292e, type: 2}
   m_sharedMaterial: {fileID: 312459304301925525, guid: 3c03a15c36aebbc4f8ce614370f7292e,
@@ -492,6 +492,11 @@ MonoBehaviour:
   ControlsParent: {fileID: 1145011726}
   OptionsParent: {fileID: 732087558}
   CreditsParent: {fileID: 1538104952}
+  twitterNameParameter: 'Check this amazing game made by @andrew_raya @JordiAlbaDev
+    @ssegarra3D @Sergisggs GerardTorras for the #GlobalGameJam @globalgamejam! Here
+    the link: '
+  twitterDescriptionParam: 
+  globalGameJamLink: https://globalgamejam.org/2022/games/untied-8
 --- !u!1 &178160260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,7 +1914,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
