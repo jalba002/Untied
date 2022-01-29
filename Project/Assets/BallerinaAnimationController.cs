@@ -39,9 +39,9 @@ public class BallerinaAnimationController : MonoBehaviour
         }
     }
 
-    public void Kill()
+    public void Kill(string deathMode = "Death")
     {
-        animator.SetTrigger("Death");
+        animator.SetTrigger(deathMode);
     }
 
     public void Restart()

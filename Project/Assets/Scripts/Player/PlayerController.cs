@@ -211,7 +211,6 @@ namespace com.kpg.ggj2022.player
 
         //  private void JumpSpeed()
         //  {
-        //      // USED WHEN KILLING ZOMBIES. DELETE AFTER
         //      Velocity.y = Properties.JumpingSpeed;
         //  }
 
@@ -219,9 +218,8 @@ namespace com.kpg.ggj2022.player
         {
             if (!controlsEnabled || !ableToMove) return;
             var movement = context.ReadValue<Vector2>();
-            //LastWalkingSpeed = LimitValue(Properties.WalkingSpeed * Time.deltaTime, LastWalkingSpeed, 1.1f);
+
             m_Direction.x = movement.x;
-            // Velocity.z = movement.y;
         }
 
         public void Freeze(InputAction.CallbackContext context)
@@ -229,7 +227,6 @@ namespace com.kpg.ggj2022.player
             if (!controlsEnabled) return;
             // if (!context.performed) return;
 
-            Debug.Log("Freezing mechanic!");
             if (context.performed)
             {
                 // Change sprite color
@@ -307,6 +304,11 @@ namespace com.kpg.ggj2022.player
         {
             this.controlsEnabled = false;
             //this.enabled = false;
+        }
+
+        public void StopMovement()
+        {
+            SetVelocity(Vector2.zero);
         }
 
         public void ToggleControls(bool enable)

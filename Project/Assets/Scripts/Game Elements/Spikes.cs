@@ -22,7 +22,8 @@ public class Spikes : TriggerArea
                 if (debugMode)
                     ChangeColor();
                 // Kills instantly?
-                pc.Respawn(); // 
+                //pc.Respawn(); 
+                StabPlayer(pc);
 
                 // Kills the pc instantly. Dies.
             }
@@ -31,6 +32,21 @@ public class Spikes : TriggerArea
         {
 
         }
+    }
+
+    private void StabPlayer(PlayerController pc)
+    {
+        // Get player visuals, center on a point, play death animation.
+        Debug.Log("Stabbing");
+        pc.Kill();
+        pc.StopMovement();
+        this.gameObject.GetComponent<Animator>().enabled = false;
+        BallerinaAnimationController a = pc.gameObject.GetComponentInChildren<BallerinaAnimationController>();
+        a.transform.parent = this.transform;
+        a.Kill("Death_Spike");
+        a.gameObject.transform.localPosition = Vector2.zero + Vector2.up;
+        a.enabled = false;
+        // Maybe respawn it after a while.
     }
 
     public void EnableTrap()
