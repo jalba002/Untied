@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Playable/00_MainMenu.unity
     guid: aa044d6472f56684aa470794c6a3b1fa
+  - enabled: 1
+    path: Assets/Scenes/Playable/01_Cinematic.unity
+    guid: 2d13e7060c878b3498a234c11ae66b1e
+  - enabled: 1
+    path: Assets/Scenes/Playable/01_MainLevel.unity
+    guid: deb550b55e1002e42baa5aeff353f80d
   m_configObjects: {}
