@@ -7,9 +7,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class TriggerArea : MonoBehaviour
+public class TriggerArea : RestartableObject
 {
     public Color debugColor = Color.red;
+    public bool debugMode = false;
+
     [ShowInInspector] protected bool trapEnabled;
 
     public UnityEvent OnTriggerActivation = new UnityEvent();
@@ -39,11 +41,12 @@ public class TriggerArea : MonoBehaviour
         try
         {
             PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
-            if(pc != null)
+            if (pc != null)
             {
                 // Enable the trigger
                 OnTriggerActivation.Invoke();
-                ChangeColor();
+                if (debugMode)
+                    ChangeColor();
             }
         }
         catch (Exception e)
@@ -59,7 +62,7 @@ public class TriggerArea : MonoBehaviour
             PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
             if (pc != null)
             {
-                ChangeColor();
+                if (debugMode) ChangeColor();
             }
         }
         catch (Exception e)

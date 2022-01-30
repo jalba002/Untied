@@ -344,7 +344,7 @@ namespace com.kpg.ggj2022.player
         public void Respawn()
         {
             IsDead = false;
-            GameManager.GM.RespawnPlayer();
+            // GameManager.GM.RespawnPlayer();
         }
 
         public override void Restart()

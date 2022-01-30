@@ -20,7 +20,7 @@ public class RestartableObject : MonoBehaviour
     public virtual void Restart()
     {
         this.gameObject.SetActive(true);
-        meshRenderer.enabled = true;
+        if(meshRenderer != null)        meshRenderer.enabled = true;
         
         transform.position = startingPosition;
         transform.rotation = startingRotation;

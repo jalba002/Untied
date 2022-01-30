@@ -49,4 +49,14 @@ public class BallerinaAnimationController : MonoBehaviour
         animator.Rebind();
         animator.Update(0f);
     }
+
+    public void Respawn()
+    {
+        GameManager.GM.RespawnPlayer();
+        Restart();
+        this.gameObject.transform.parent = GameManager.GM.player.transform;
+        this.gameObject.transform.localPosition = Vector3.zero;
+        this.enabled = true;
+        animator.enabled = true;
+    }
 }

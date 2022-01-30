@@ -6,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Spikes : TriggerArea
 {
-    public bool debugMode = false;
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         OnTriggerEnter2D(collision);
@@ -24,8 +22,8 @@ public class Spikes : TriggerArea
             {
                 // Enable the trigger
                 OnTriggerActivation.Invoke();
-                if (debugMode)
-                    ChangeColor();
+                //if (debugMode)
+                //    ChangeColor();
                 // Kills instantly?
                 //pc.Respawn(); 
                 StabPlayer(pc);
@@ -63,5 +61,17 @@ public class Spikes : TriggerArea
     public void DisableTrap()
     {
         trapEnabled = false;
+    }
+
+    public override void Restart()
+    {
+        try
+        {
+            this.gameObject.GetComponent<Animator>().enabled = true;
+        }
+        catch (MissingComponentException)
+        {
+
+        }
     }
 }

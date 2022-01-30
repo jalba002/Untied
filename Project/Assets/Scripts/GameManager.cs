@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using com.kpg.ggj2022.player;
 using UnityEngine;
 
-// This class is a literal god.
 public class GameManager : MonoBehaviour
 {
     private static GameManager _gameManager;
@@ -25,50 +24,42 @@ public class GameManager : MonoBehaviour
 
     public PlayerController player;
 
-    // PauseManager _pauseManager;
     private IEnumerator playerRespawner;
 
     public void Awake()
     {
         GM = this;
-        // transform.parent = null;
-        // DontDestroyOnLoad(this.gameObject);
-        // gameObject.name = "[LITERAL GOD]";
-        // _pauseManager = FindObjectOfType<PauseManager>();
+        player = FindObjectOfType<PlayerController>();
     }
 
-    private void Start()
+    public void RestartAllElements()
     {
-        // PlayGame();
+        var all = FindObjectsOfType<RestartableObject>();
+        foreach(var item in all)
+        {
+            item.Restart();
+        }
     }
 
-    void TeleportController(PlayerController pc, Vector3 position)
+    public void TeleportPlayer(Vector2 position)
     {
-        //pc.Controller.enabled = false;
-        pc.gameObject.transform.position = position;
-        //pc.Controller.enabled = true;
+        player.gameObject.transform.position = position;
     }
-
-    public void TeleportPlayer(Vector3 pos)
+    public void TeleportPlayer(Transform t)
     {
-        TeleportController(player, pos);
-        //m_Camera.GetComponent<FollowCameraController>().ForceNewPos();
-    }
-
-    public void TeleportPlayer(Transform pos)
-    {
-        TeleportController(player, pos.position);
-        //m_Camera.GetComponent<FollowCameraController>().ForceNewPos();
+        player.gameObject.transform.position = new Vector2(t.position.x, t.position.y);
     }
 
     public void RespawnPlayer()
     {
         if (playerRespawner != null) return;
+        FindObjectOfType<BoundsChanger>().SetDefault();
         if(HUDManager.Instance != null)
             playerRespawner = RespawnPlayer(player.GetStartingPos());
         else
             playerRespawner = RespawnPlayerNoAnim(player.GetStartingPos());
-        
+
+        RestartAllElements();
         StartCoroutine(playerRespawner);
     }
 
@@ -82,22 +73,17 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(playerRespawner);
     }
-
-    private void RepositionAllElements()
-    {
-        var stuff = FindObjectsOfType<MonoBehaviour>();
-
-    }
     
     private IEnumerator RespawnPlayerNoAnim(Vector3 pos)
     {
         yield return null;
         TeleportPlayer(pos);
         player.ToggleControls(true);
+        player.Respawn();
         playerRespawner = null;
     }
 
-    private IEnumerator RespawnPlayer(Vector3 pos)
+    private IEnumerator RespawnPlayer(Vector2 pos)
     {
         // Camera fadeblack
 
@@ -141,48 +127,8 @@ public class GameManager : MonoBehaviour
         playerRespawner = null;
     }
 
-
-    // public void TeleportPlayerToWaitingRoom(PlayerController pc)
-    // {
-    //     TeleportController(pc, waitingRoom.position);
-    // }
-
-    // public void TogglePlayerControl(bool enable)
-    // {
-    //     Debug.Log("Player has " + (enable ? "YES" : "NO") + " control.");
-    //     foreach (var item in m_Players)
-    //     {
-    //         item.ToggleInput(enable);
-    //     }
-    // }
-
-    // [Button("Set camera spot")]
-    // public void SetCameraSpot(CameraSpot cameraSpot)
-    // {
-    //     m_Camera.transform.position = cameraSpot.transform.position;
-    //     m_Camera.transform.rotation = cameraSpot.transform.rotation;
-    //     m_Camera.fieldOfView = cameraSpot.FOV;
-    // }
-
-    //public void Pause()
-    //{
-    //    // Get the pause menu and toggle it.
-    //    // If the pause menu is null ignore it.
-    //    if (_pauseManager == null) return;
-
-    //    _pauseManager.PauseOn();
-
-    //}
-
     public GameObject GetPlayerGO()
     {
         return player.gameObject;
     }
-
-    //  public void UpdateOnSceneLoad()
-    //  {
-    //      player = FindObjectOfType<PlayerController>();
-    //      m_Camera = FindObjectOfType<Camera>();
-    //      _pauseManager = FindObjectOfType<PauseManager>();
-    //  }
 }
