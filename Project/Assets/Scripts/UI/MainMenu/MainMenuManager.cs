@@ -46,7 +46,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void ReturnToMain()
     {
-        MainParent.gameObject.SetActive(true);
+        if(MainParent != null)
+            MainParent.gameObject.SetActive(true);
         if(OptionsParent != null)
             OptionsParent.gameObject.SetActive(false);
         if(ControlsParent != null)

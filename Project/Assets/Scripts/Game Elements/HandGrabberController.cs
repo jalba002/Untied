@@ -30,7 +30,7 @@ public class HandGrabberController : MonoBehaviour
 
     public void KillPlayer()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(boxCollider2d.bounds.center, 2.5f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(boxCollider2d.bounds.center, 4f);
         List<Collider2D> list = new List<Collider2D>();
         foreach (Collider2D col in colliders)
         {

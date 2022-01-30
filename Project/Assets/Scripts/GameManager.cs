@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using com.kpg.ggj2022.player;
 using UnityEngine;
@@ -35,9 +36,17 @@ public class GameManager : MonoBehaviour
     public void RestartAllElements()
     {
         var all = FindObjectsOfType<RestartableObject>();
-        foreach(var item in all)
+        foreach (var item in all)
         {
-            item.Restart();
+            try
+            {
+                item.Restart();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e.Message);
+                continue;
+            }
         }
     }
 
@@ -54,12 +63,19 @@ public class GameManager : MonoBehaviour
     {
         if (playerRespawner != null) return;
         FindObjectOfType<BoundsChanger>().SetDefault();
-        if(HUDManager.Instance != null)
+        if (HUDManager.Instance != null)
             playerRespawner = RespawnPlayer(player.GetStartingPos());
         else
             playerRespawner = RespawnPlayerNoAnim(player.GetStartingPos());
 
-        RestartAllElements();
+        try
+        {
+            RestartAllElements();
+        }
+        catch (Exception e)
+        {
+
+        }
         StartCoroutine(playerRespawner);
     }
 
@@ -73,7 +89,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(playerRespawner);
     }
-    
+
     private IEnumerator RespawnPlayerNoAnim(Vector3 pos)
     {
         yield return null;
