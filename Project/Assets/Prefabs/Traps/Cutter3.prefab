@@ -177,7 +177,7 @@ MonoBehaviour:
   OnTriggerActivation:
     m_PersistentCalls:
       m_Calls: []
-  debugMode: 1
+  debugMode: 0
 --- !u!50 &9078954823696373416
 Rigidbody2D:
   serializedVersion: 4

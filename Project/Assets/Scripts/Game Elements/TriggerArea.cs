@@ -10,13 +10,14 @@ using UnityEngine.Events;
 public class TriggerArea : MonoBehaviour
 {
     public Color debugColor = Color.red;
-    protected bool trapEnabled;
+    [ShowInInspector] protected bool trapEnabled;
 
     public UnityEvent OnTriggerActivation = new UnityEvent();
 
     public void Start()
     {
         // OnTriggerActivation.AddListener(ChangeColor);
+        trapEnabled = true;
     }
 
     public void ChangeColor()

@@ -41,7 +41,7 @@ namespace com.kpg.ggj2022.player
         [Header("2D Game")]
         Rigidbody2D rb2d;
         BoxCollider2D bc2d;
-        SpriteRenderer visualSprite;
+        //SpriteRenderer visualSprite;
 
         bool IsGrounded = false;
         public LayerMask groundLayers;
@@ -72,7 +72,7 @@ namespace com.kpg.ggj2022.player
             base.Awake();
             rb2d = GetComponent<Rigidbody2D>();
             bc2d = GetComponent<BoxCollider2D>();
-            visualSprite = GetComponentInChildren<SpriteRenderer>();
+            //visualSprite = GetComponentInChildren<SpriteRenderer>();
             IsDead = false;
             Properties = InstantiateProperties ? Instantiate(Properties) : Properties;
         }
@@ -231,7 +231,7 @@ namespace com.kpg.ggj2022.player
             if (context.performed)
             {
                 // Change sprite color
-                visualSprite.color = Color.blue;
+                //visualSprite.color = Color.blue;
                 ableToMove = false;
                 visibleByEnemies = false;
                 SetVelocity(Vector2.zero);
@@ -239,7 +239,7 @@ namespace com.kpg.ggj2022.player
             else
             {
                 // Return to original.x
-                visualSprite.color = Color.green;
+                //visualSprite.color = Color.green;
                 ableToMove = true;
                 visibleByEnemies = true;
             }
