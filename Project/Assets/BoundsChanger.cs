@@ -16,4 +16,9 @@ public class BoundsChanger : MonoBehaviour
     {
         ChangeBounds(defaultCollider);
     }
+
+    public void ChangeSize(float size)
+    {
+        cinemachineConfiner.gameObject.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = size;
+    }
 }

@@ -47,3 +47,6 @@ TagManager:
   - name: Player
     uniqueID: 2079264295
     locked: 0
+  - name: Triggers
+    uniqueID: 1648313813
+    locked: 0
