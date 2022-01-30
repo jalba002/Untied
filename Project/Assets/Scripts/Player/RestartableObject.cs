@@ -22,7 +22,7 @@ public class RestartableObject : MonoBehaviour
         this.gameObject.SetActive(true);
         if(meshRenderer != null)        meshRenderer.enabled = true;
         
-        transform.position = startingPosition;
+        transform.position = (Vector2)startingPosition;
         transform.rotation = startingRotation;
     }
 

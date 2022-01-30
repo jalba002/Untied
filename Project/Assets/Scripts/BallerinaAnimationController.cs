@@ -56,6 +56,7 @@ public class BallerinaAnimationController : MonoBehaviour
         Restart();
         this.gameObject.transform.parent = GameManager.GM.player.transform;
         this.gameObject.transform.localPosition = Vector3.zero;
+        this.gameObject.transform.localRotation = Quaternion.identity;
         this.enabled = true;
         animator.enabled = true;
     }
