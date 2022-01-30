@@ -54,7 +54,13 @@ public class GameManager : MonoBehaviour
         TeleportController(player, pos);
         //m_Camera.GetComponent<FollowCameraController>().ForceNewPos();
     }
-    
+
+    public void TeleportPlayer(Transform pos)
+    {
+        TeleportController(player, pos.position);
+        //m_Camera.GetComponent<FollowCameraController>().ForceNewPos();
+    }
+
     public void RespawnPlayer()
     {
         if (playerRespawner != null) return;
