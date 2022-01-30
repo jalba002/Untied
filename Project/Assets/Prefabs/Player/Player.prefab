@@ -2798,7 +2798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InstantiateProperties: 1
   Properties: {fileID: 11400000, guid: d5d692cd95a1b6740a9285c242b00313, type: 2}
-  debugMode: 1
+  debugMode: 0
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
