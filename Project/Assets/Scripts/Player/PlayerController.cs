@@ -53,6 +53,7 @@ namespace com.kpg.ggj2022.player
         bool visibleByEnemies = true;
         bool ableToMove = true;
 
+        public bool IsDead { get; private set; }
 
 
         private bool m_FacingRight = true;
@@ -72,7 +73,7 @@ namespace com.kpg.ggj2022.player
             rb2d = GetComponent<Rigidbody2D>();
             bc2d = GetComponent<BoxCollider2D>();
             visualSprite = GetComponentInChildren<SpriteRenderer>();
-
+            IsDead = false;
             Properties = InstantiateProperties ? Instantiate(Properties) : Properties;
         }
 
@@ -304,6 +305,7 @@ namespace com.kpg.ggj2022.player
         {
             this.controlsEnabled = false;
             //this.enabled = false;
+            IsDead = true;
         }
 
         public void StopMovement()
@@ -341,7 +343,14 @@ namespace com.kpg.ggj2022.player
 
         public void Respawn()
         {
+            IsDead = false;
             GameManager.GM.RespawnPlayer();
+        }
+
+        public override void Restart()
+        {
+            base.Restart();
+            Respawn();
         }
 
         #endregion

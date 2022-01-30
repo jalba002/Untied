@@ -164,7 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14247af32f4131a43b8909f3547ae6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
   player: {fileID: 1892975442}
 --- !u!1 &52414797
 GameObject:
@@ -2083,6 +2082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5836118401764361298}
   - component: {fileID: 4876005798445670233}
+  - component: {fileID: 1242135491577157152}
   m_Layer: 0
   m_Name: bone_1
   m_TagString: Untagged
@@ -2090,6 +2090,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1242135491577157152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242135491577157151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0c2f09102128a46b821499519ba9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider2d: {fileID: 0}
 --- !u!212 &1273945530726204578
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2852,8 +2865,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3740804416315714206, guid: d693a6f9f70c19b44922d5caa8497824,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740804416315714206, guid: d693a6f9f70c19b44922d5caa8497824,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.64
+      value: -16.99
       objectReference: {fileID: 0}
     - target: {fileID: 3740804416315714206, guid: d693a6f9f70c19b44922d5caa8497824,
         type: 3}

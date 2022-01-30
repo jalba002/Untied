@@ -7,6 +7,11 @@ using UnityEngine;
 public class Spikes : TriggerArea
 {
     public bool debugMode = false;
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        OnTriggerEnter2D(collision);
+    }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         // base.OnTriggerEnter2D(collision);
@@ -37,6 +42,7 @@ public class Spikes : TriggerArea
     private void StabPlayer(PlayerController pc)
     {
         // Get player visuals, center on a point, play death animation.
+        if (pc.IsDead) return;
         Debug.Log("Stabbing");
         pc.Kill();
         pc.StopMovement();

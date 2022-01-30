@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Camera m_Camera;
-
     public PlayerController player;
 
     // PauseManager _pauseManager;
@@ -36,14 +34,11 @@ public class GameManager : MonoBehaviour
         // transform.parent = null;
         // DontDestroyOnLoad(this.gameObject);
         // gameObject.name = "[LITERAL GOD]";
-        m_Camera = FindObjectOfType<Camera>();
         // _pauseManager = FindObjectOfType<PauseManager>();
     }
 
     private void Start()
     {
-        GetPlayers();
-        
         // PlayGame();
     }
 
@@ -70,6 +65,23 @@ public class GameManager : MonoBehaviour
         
         StartCoroutine(playerRespawner);
     }
+
+    public void RestartGame()
+    {
+        if (playerRespawner != null) return;
+        if (HUDManager.Instance != null)
+            playerRespawner = RestartGame(player.GetStartingPos());
+        else
+            playerRespawner = RestartGameNoAnim(player.GetStartingPos());
+
+        StartCoroutine(playerRespawner);
+    }
+
+    private void RepositionAllElements()
+    {
+        var stuff = FindObjectsOfType<MonoBehaviour>();
+
+    }
     
     private IEnumerator RespawnPlayerNoAnim(Vector3 pos)
     {
@@ -92,13 +104,38 @@ public class GameManager : MonoBehaviour
         // Camera fadewhite
         playerRespawner = null;
     }
-    
-    public void GetPlayers()
+
+    private IEnumerator RestartGame(Vector3 pos)
     {
-        player = FindObjectOfType<PlayerController>();
+        // Camera fadeblack
+
+        yield return new WaitForSecondsRealtime(HUDManager.Instance.FadeToBlack());
+        TeleportPlayer(pos);
+        player.ToggleControls(true);
+        // player.GetComponent<PlayerAnimatorManager>().Restart();
+        // player.GetComponent<PlayerHealthManager>().Respawn();
+        yield return new WaitForSecondsRealtime(HUDManager.Instance.FadeToWhite());
+        // Camera fadewhite
+        playerRespawner = null;
     }
-    
-    
+
+    private IEnumerator RestartGameNoAnim(Vector3 pos)
+    {
+        // Camera fadeblack
+
+        yield return new WaitForSeconds(1f);
+        TeleportPlayer(pos);
+        player.ToggleControls(true);
+        player.StopMovement();
+
+
+        // player.GetComponent<PlayerAnimatorManager>().Restart();
+        // player.GetComponent<PlayerHealthManager>().Respawn();
+        // Camera fadewhite
+        playerRespawner = null;
+    }
+
+
     // public void TeleportPlayerToWaitingRoom(PlayerController pc)
     // {
     //     TeleportController(pc, waitingRoom.position);
@@ -126,9 +163,9 @@ public class GameManager : MonoBehaviour
     //    // Get the pause menu and toggle it.
     //    // If the pause menu is null ignore it.
     //    if (_pauseManager == null) return;
-        
+
     //    _pauseManager.PauseOn();
-        
+
     //}
 
     public GameObject GetPlayerGO()

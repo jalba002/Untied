@@ -55,6 +55,11 @@ public class HandGrabberController : MonoBehaviour
         }
     }
 
+    public void EndGame()
+    {
+        GameManager.GM.RestartGame();
+    }
+
     public void EnableGrab()
     {
         boxCollider2d.enabled = enabled;
