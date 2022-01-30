@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3707335025446639469}
   - component: {fileID: 3707335025446639458}
-  - component: {fileID: 1128763695533749080}
-  - component: {fileID: 2136936838212876314}
-  - component: {fileID: 4230603609877825237}
-  - component: {fileID: 2751305910384756915}
-  - component: {fileID: 3335255818045173230}
   - component: {fileID: 4428723680056190217}
+  - component: {fileID: 5270253962414344005}
+  - component: {fileID: 1808336294986717565}
+  - component: {fileID: 698312540120980576}
+  - component: {fileID: 886889808638045150}
+  - component: {fileID: 1240908143292058252}
   m_Layer: 0
   m_Name: CMusica_Tapa
   m_TagString: Untagged
@@ -87,73 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &1128763695533749080
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3707335025446639459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0173035, y: 0.41526031, z: 0.2}
-  m_Center: {x: -0.77915955, y: -0.088840485, z: 0}
---- !u!65 &2136936838212876314
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3707335025446639459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.106552, y: 2.9987736, z: 0.2}
-  m_Center: {x: -0.02733612, y: -1.4626131, z: 0}
---- !u!136 &4230603609877825237
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3707335025446639459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3312378
-  m_Height: 1.1124134
-  m_Direction: 1
-  m_Center: {x: -2.4821014, y: -2.4057932, z: 0}
---- !u!136 &2751305910384756915
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3707335025446639459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3312378
-  m_Height: 1.1124134
-  m_Direction: 1
-  m_Center: {x: 1.1, y: -2.4057932, z: 0}
---- !u!65 &3335255818045173230
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3707335025446639459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.5141754, y: 6.542902, z: 0.2}
-  m_Center: {x: 4.540703, y: 0.3094511, z: 0}
 --- !u!114 &4428723680056190217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +99,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ffedc97cfcf4d744af37932926ab65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeIn: {fileID: 0}
+--- !u!70 &5270253962414344005
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707335025446639459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.5027885, y: -2.4110959}
+  m_Size: {x: 0.6381607, y: 1.1018038}
+  m_Direction: 0
+--- !u!61 &1808336294986717565
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707335025446639459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.2663383, y: 0.06982136}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.708, y: 5.924}
+    newSize: {x: 28.54, y: 29.62}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.9787064, y: 5.784357}
+  m_EdgeRadius: 0
+--- !u!61 &698312540120980576
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707335025446639459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.70202255, y: -0.27233124}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.708, y: 5.924}
+    newSize: {x: 28.54, y: 29.62}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.158516, y: 0.63331604}
+  m_EdgeRadius: 0
+--- !u!61 &886889808638045150
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707335025446639459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.70672226, y: -1.3904572}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.708, y: 5.924}
+    newSize: {x: 28.54, y: 29.62}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.6721268, y: 2.8059387}
+  m_EdgeRadius: 0
+--- !u!70 &1240908143292058252
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707335025446639459}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.1, y: -2.4110959}
+  m_Size: {x: 0.6381607, y: 1.1018038}
+  m_Direction: 0

@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class BounceToFinish : MonoBehaviour
 {
+    public GameObject FadeIn;
+
+    public void Start()
+    {
+        FadeIn.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       GetComponent<PlayerController>().SetVelocity(new Vector2(0.0f, 90.0f));
+        collision.GetComponent<PlayerController>().SetVelocity(new Vector2(0.0f, 50.0f));
+        FadeIn.SetActive(true);
     }
 }
