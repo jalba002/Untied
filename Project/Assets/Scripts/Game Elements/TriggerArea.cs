@@ -1,6 +1,7 @@
 ﻿#pragma warning disable CS0168
 
 using com.kpg.ggj2022.player;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,6 +25,12 @@ public class TriggerArea : MonoBehaviour
         Color tempColor = spriteRenderer.color;
         spriteRenderer.color = debugColor;
         debugColor = tempColor;
+    }
+
+    [Button("Force invoke")]
+    public void Test()
+    {
+        OnTriggerActivation.Invoke();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
