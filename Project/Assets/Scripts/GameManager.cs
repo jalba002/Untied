@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         player.gameObject.transform.position = position;
     }
+
     public void TeleportPlayer(Transform t)
     {
         player.gameObject.transform.position = new Vector2(t.position.x, t.position.y);

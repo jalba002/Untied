@@ -9,7 +9,7 @@ public class Respawner : MonoBehaviour
 
         if (pc != null)
         {
-            pc.Restart();
+            GameManager.GM.RespawnPlayer();
         }
     }
 }

@@ -3231,7 +3231,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1356510307}
   - component: {fileID: 1356510308}
-  - component: {fileID: 1356510309}
   m_Layer: 0
   m_Name: Preferences
   m_TagString: Untagged
@@ -3271,23 +3270,6 @@ MonoBehaviour:
   - MusicVolume
   - AmbienceVolume
   - CinematicsVolume
---- !u!114 &1356510309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356510306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b42ed3efa4fd943a9e69aeafdb6296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mixer: {fileID: 24100000, guid: bb3798bd1cab998429c963b85ab5640d, type: 2}
-  audioOutputGroup: {fileID: -4548501787448301362, guid: bb3798bd1cab998429c963b85ab5640d,
-    type: 2}
-  audios: []
-  musicAudioSource: {fileID: 0}
 --- !u!1 &1465862488
 GameObject:
   m_ObjectHideFlags: 0

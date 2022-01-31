@@ -45,7 +45,7 @@ namespace com.kpg.ggj2022.player
 
         bool IsGrounded = false;
         public LayerMask groundLayers;
-        public const float k_GroundDetectionRadius = 0.5f;
+        public const float k_GroundDetectionRadius = 0.1f;
         public Transform groundSpot;
         [Header("Visuals")]
         [Tooltip("Child gameobject that contains the model and the animations.")]
@@ -217,10 +217,10 @@ namespace com.kpg.ggj2022.player
 
         public void Move(InputAction.CallbackContext context)
         {
-            if (!controlsEnabled || !ableToMove) return;
+            if (!controlsEnabled) return;
             var movement = context.ReadValue<Vector2>();
 
-            m_Direction.x = movement.x;
+            m_Direction.x = !ableToMove ? 0 : movement.x;
         }
 
         public void Freeze(InputAction.CallbackContext context)
@@ -232,7 +232,7 @@ namespace com.kpg.ggj2022.player
             {
                 // Change sprite color
                 //visualSprite.color = Color.blue;
-                ableToMove = false;
+                //ableToMove = false;
                 visibleByEnemies = false;
                 SetVelocity(Vector2.zero);
             }
@@ -240,7 +240,7 @@ namespace com.kpg.ggj2022.player
             {
                 // Return to original.x
                 //visualSprite.color = Color.green;
-                ableToMove = true;
+                //ableToMove = true;
                 visibleByEnemies = true;
             }
         }
@@ -279,7 +279,7 @@ namespace com.kpg.ggj2022.player
 
         public Vector2 GetVelocity()
         {
-            return rb2d.velocity;
+            return m_Direction;
         }
 
         public bool GetFrozen()
@@ -295,6 +295,15 @@ namespace com.kpg.ggj2022.player
         public bool IsVisible()
         {
             return visibleByEnemies;
+        }
+
+        #endregion
+
+        #region Setters
+
+        public void ToggleMovement(bool enable)
+        {
+            ableToMove = enable;
         }
 
         #endregion

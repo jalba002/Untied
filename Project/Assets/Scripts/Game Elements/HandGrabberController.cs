@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandGrabberController : MonoBehaviour
+public class HandGrabberController : RestartableObject
 {
     public BoxCollider2D boxCollider2d;
     Animator animator;
@@ -73,5 +73,12 @@ public class HandGrabberController : MonoBehaviour
     public void StartGrab()
     {
         animator.SetTrigger("Seek");
+    }
+
+    public override void Restart()
+    {
+        //base.Restart();
+        animator.Rebind();
+        animator.Update(0f);
     }
 }

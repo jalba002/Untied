@@ -44,7 +44,15 @@ public class Spikes : TriggerArea
         Debug.Log("Stabbing");
         pc.Kill();
         pc.StopMovement();
-        this.gameObject.GetComponent<Animator>().enabled = false;
+        try
+        {
+
+            this.gameObject.GetComponent<Animator>().enabled = false;
+        }
+        catch (MissingComponentException)
+        {
+            // Meh
+        }
         BallerinaAnimationController a = pc.gameObject.GetComponentInChildren<BallerinaAnimationController>();
         a.transform.parent = this.transform;
         a.Kill("Death_Spike");

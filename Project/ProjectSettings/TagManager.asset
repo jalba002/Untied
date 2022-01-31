@@ -50,3 +50,6 @@ TagManager:
   - name: Triggers
     uniqueID: 1648313813
     locked: 0
+  - name: Tapa
+    uniqueID: 1096936861
+    locked: 0
