@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public bool enableOnLoad = true;
+    [Header("Settings")]
     public string sceneToLoad = "01";
 
     public RectTransform background;
@@ -23,11 +25,12 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        ReturnToMain();
         InputSystemUI = FindObjectOfType<InputSystemUIInputModule>();
         //InputSystemUI.cancel.action.performed += HandleReturn;
         
         HookUponLoading();
+        if(enableOnLoad)
+            ReturnToMain();
     }
 
     public void HookUponLoading()
@@ -108,6 +111,14 @@ public class MainMenuManager : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    /// <summary>
+    /// Returns to the main menu scene.
+    /// </summary>
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0); // Loads the first scene loaded in the project. Can FAIL! 
     }
 
     public string twitterNameParameter = "Check this amazing game made by @andrew_raya @JordiAlbaDev @ssegarra3D @Sergisggs GerardTorras for the #GlobalGameJam @globalgamejam! Here the link: ";
