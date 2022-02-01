@@ -24,4 +24,24 @@ public class UIManager : MonoBehaviour
         else
             SceneManager.UnloadSceneAsync(sceneName);
     }
+
+    public static AsyncOperation LoadScene(string sName)
+    {
+        return SceneManager.LoadSceneAsync(sName, LoadSceneMode.Additive);
+    }
+
+    public static void UnloadScene(string sName)
+    {
+        SceneManager.UnloadSceneAsync(sName);
+    }
+
+    public static bool IsSceneLoaded(string sName)
+    {
+        return SceneManager.GetSceneByName(sName).isLoaded;
+    }
+
+    public static Scene GetScene(string sName)
+    {
+        return SceneManager.GetSceneByName(sName);
+    }
 }

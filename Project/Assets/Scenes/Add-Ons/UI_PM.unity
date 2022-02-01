@@ -487,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 01
+  background: {fileID: 733406255}
   MainParent: {fileID: 817098303}
   ControlsParent: {fileID: 0}
   OptionsParent: {fileID: 732087558}

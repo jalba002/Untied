@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using com.kpg.ggj2022.player;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,9 +25,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public PlayerController player;
+    [HideInInspector]    public PlayerController player;
+    public string uiSceneName = "UI_MM";
 
     private IEnumerator playerRespawner;
+    InputSystemUIInputModule InputSystemUI;
 
     public void Awake()
     {
@@ -144,8 +148,45 @@ public class GameManager : MonoBehaviour
         playerRespawner = null;
     }
 
+    IEnumerator LinkUI()
+    {
+        // Load the UI scene.
+        var sceneLoader = UIManager.LoadScene(uiSceneName);
+        sceneLoader.allowSceneActivation = false;
+
+        while(!sceneLoader.isDone) // While is loading, do nothing.
+        {
+            // If the scene is loaded, then search a MainMenuManager
+            yield return null;
+            Debug.Log("Loading! " + sceneLoader.progress + "%");
+        }
+        sceneLoader.allowSceneActivation = true;
+        if(UIManager.IsSceneLoaded(uiSceneName))
+        {
+            var s = UIManager.GetScene(uiSceneName).GetRootGameObjects();
+            Debug.Log(s.Length);
+            // Find the correct gameobject, then apply logic. TODO UNFINISHED SLOW STUFF.
+        }
+        // If found, then join the function that activates the Main part to showing when pressing ESC.
+        InputSystemUI = FindObjectOfType<InputSystemUIInputModule>();
+        InputSystemUI.cancel.action.performed += EnablePauseUI;
+    }
+
+    public void EnablePauseUI(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            //
+            //pauseMenuManager?.ReturnToMain();
+            // HOOK WITH ESCAPE FROM HERE
+            // TELL PLAYER TO STOP MOVING.
+        }
+    }
+
     public GameObject GetPlayerGO()
     {
         return player.gameObject;
     }
+
+
 }
