@@ -489,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 01_Cinematic
+  background: {fileID: 0}
   MainParent: {fileID: 817098303}
   ControlsParent: {fileID: 1145011726}
   OptionsParent: {fileID: 732087558}
@@ -2540,7 +2541,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4284374622
   m_fontColor: {r: 0.36862746, g: 0.36862746, b: 0.36862746, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
