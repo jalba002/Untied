@@ -2,6 +2,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
@@ -18,13 +19,15 @@ public class MainMenuManager : MonoBehaviour
 
     private InputSystemUIInputModule InputSystemUI;
 
+    [HideInInspector]    public UnityEvent OnPauseResume = new UnityEvent();
+
     private void Start()
     {
         ReturnToMain();
         InputSystemUI = FindObjectOfType<InputSystemUIInputModule>();
-        InputSystemUI.cancel.action.performed += HandleReturn;
+        //InputSystemUI.cancel.action.performed += HandleReturn;
         
-        //HookUponLoading();
+        HookUponLoading();
     }
 
     public void HookUponLoading()
@@ -90,6 +93,8 @@ public class MainMenuManager : MonoBehaviour
             ControlsParent.gameObject.SetActive(false);
         if (CreditsParent != null)
             CreditsParent.gameObject.SetActive(false);
+
+        OnPauseResume.Invoke();
     }
 
     public void Play()

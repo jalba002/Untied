@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [HideInInspector]    public PlayerController player;
+    private MainMenuManager pauseMenuManager;
+
+    [HideInInspector] public PlayerController player;
     public string uiSceneName = "UI_MM";
 
     private IEnumerator playerRespawner;
@@ -154,14 +156,14 @@ public class GameManager : MonoBehaviour
         var sceneLoader = UIManager.LoadScene(uiSceneName);
         sceneLoader.allowSceneActivation = false;
 
-        while(!sceneLoader.isDone) // While is loading, do nothing.
+        while (!sceneLoader.isDone) // While is loading, do nothing.
         {
             // If the scene is loaded, then search a MainMenuManager
             yield return null;
             Debug.Log("Loading! " + sceneLoader.progress + "%");
         }
         sceneLoader.allowSceneActivation = true;
-        if(UIManager.IsSceneLoaded(uiSceneName))
+        if (UIManager.IsSceneLoaded(uiSceneName))
         {
             var s = UIManager.GetScene(uiSceneName).GetRootGameObjects();
             Debug.Log(s.Length);
@@ -174,13 +176,37 @@ public class GameManager : MonoBehaviour
 
     public void EnablePauseUI(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (pauseMenuManager == null)
         {
-            //
-            //pauseMenuManager?.ReturnToMain();
-            // HOOK WITH ESCAPE FROM HERE
-            // TELL PLAYER TO STOP MOVING.
+            pauseMenuManager = FindObjectOfType<MainMenuManager>();
+            pauseMenuManager.OnPauseResume.AddListener(ResumeGame);
         }
+        try
+        {
+            if (context.performed)
+            {
+                // pauseMenuManager?.ReturnToMain();
+                // HOOK WITH ESCAPE FROM HERE
+                // TELL PLAYER TO STOP MOVING.
+                player.ToggleControls(false);
+                player.StopMovement();
+                pauseMenuManager.ReturnToMain();
+            }
+            //else
+            //{
+            //    player.ToggleControls(true);
+            //    //pauseMenuManager.ReturnToMain();
+            //}
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("Pause Menu manager not found!");
+        }
+    }
+
+    public void ResumeGame()
+    {
+        player.ToggleControls(true);
     }
 
     public GameObject GetPlayerGO()
